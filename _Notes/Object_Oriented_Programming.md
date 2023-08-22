@@ -12,7 +12,9 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
 By the end of this lesson, you should be able to:
+
 - Create `class` definitions with initialization and other methods
 - Create **stored** property and **computed** property
 - Draw UML class diagram of a class with attributes and methods
@@ -21,6 +23,7 @@ By the end of this lesson, you should be able to:
 - Draw UML class diagram for `has-a` relationship
 
 Important words:
+
 - object
 - class
 - instance
@@ -226,18 +229,18 @@ TypeError                                 Traceback (most recent call last)
 TypeError: can only concatenate str (not "int") to str
 ```
 
-Therefore, it is important that we do encapsulation. Encapsulation ensures that any access to the data should be done through some specific methods. 
+Therefore, it is important that we do encapsulation. Encapsulation ensures that any access to the data should be done through some specific methods.
 
-Let's look at another example of why we want to do encapsulation. Let's say we want to *update* our Robot class definition to implement relative coordinates where the robot has a absolute position and a relative position with respect to some initial position in the map. Let's say, the robot can start at any other position other than `0, 0` and we want to store the absolute position of the robot as its attribute. This change requires a change in the way the programmers set the value of the robot's position  since previously the position is always relative to the origin of `0,0`. Such changes may break the code since now the `_pos` attribute means differently. Previously, it is relative to `0, 0` and now it is going to be some absolute position in the map. With encapsulation, however, we can keep the way position is set while changing the internal attributes. For example, we can create `pos` as relative to the initial origin while storing the absolute position internally based on where the initial origin is. Encapsulation simply separates the internal data representation with how others interact with this object. Without encapsulation, we will break the code and requires new methods to be created.  
+Let's look at another example of why we want to do encapsulation. Let's say we want to _update_ our Robot class definition to implement relative coordinates where the robot has a absolute position and a relative position with respect to some initial position in the map. Let's say, the robot can start at any other position other than `0, 0` and we want to store the absolute position of the robot as its attribute. This change requires a change in the way the programmers set the value of the robot's position since previously the position is always relative to the origin of `0,0`. Such changes may break the code since now the `_pos` attribute means differently. Previously, it is relative to `0, 0` and now it is going to be some absolute position in the map. With encapsulation, however, we can keep the way position is set while changing the internal attributes. For example, we can create `pos` as relative to the initial origin while storing the absolute position internally based on where the initial origin is. Encapsulation simply separates the internal data representation with how others interact with this object. Without encapsulation, we will break the code and requires new methods to be created.
 
 To achieve this data encapsulation, we usually craete two kinds of methods:
 
 - enquiry or _getter_: this method is used to get or enquire the state of the object
 - modifier or _setter_: this method is used to modify or set the state of the object.
 
-![](/assets/images/week4/property_attribute.png)
+![](/2022/assets/images/week4/property_attribute.png)
 
-In Python, we do this using the concept of **property**. A _property_ represents an attribute with its getter and setter. Note that **a property is not the same as the attribute**. Because they are not the same, Python will require you to use two different names. The name of the property must not be the same as the name of the attribute. Property looks like an attribute but they behave differently. When we set a property's value, it passes through its **setter** method. Similarly, when we get a property's value, we can only obtain it from its **getter** method. Since all access passes through some methods, the data is encapsulated by the getter and the setter methods. We can make changes internally without affecting how the outside world interact with the data. 
+In Python, we do this using the concept of **property**. A _property_ represents an attribute with its getter and setter. Note that **a property is not the same as the attribute**. Because they are not the same, Python will require you to use two different names. The name of the property must not be the same as the name of the attribute. Property looks like an attribute but they behave differently. When we set a property's value, it passes through its **setter** method. Similarly, when we get a property's value, we can only obtain it from its **getter** method. Since all access passes through some methods, the data is encapsulated by the getter and the setter methods. We can make changes internally without affecting how the outside world interact with the data.
 
 Let's rewrite our `RobotTurtle` class using property to encapsulate the `_name` attribute and `_speed` attribute. To do this, we are going to create two properties, one for `name` and the other one for `speed`. On the other hand, we wil create a property for position only with a getter. The reason is that we want position to be modified only by calling the `move()` method.
 
@@ -673,7 +676,7 @@ But now it is no longer necessary and Python knows how to convert your `Coordina
 
 In designing Object Oriented programs, we usually use a [UML diagram](https://en.wikipedia.org/wiki/Class_diagram). UML stands for _Unified Modeling Language_ and it gives some specifications how to represent the classes visually. For example, our `RobotTurtle` class is drawn as the following UML class diagram.
 
-<img src="/assets/images/week4/basic_class_attr_method.png" alt="drawing" style="background-color:white" width="400"/>
+<img src="/2022/assets/images/week4/basic_class_attr_method.png" alt="drawing" style="background-color:white" width="400"/>
 
 The UML Class diagram consists of three compartment:
 
@@ -683,10 +686,10 @@ The UML Class diagram consists of three compartment:
 
 Sometime, it is useful to identify the property's type especially when there is a case of composition as in our `pos` property. In this case, we know that `pos` is of the type `Coordinate`. This is drawn in UML diagram as follows.
 
-<img src="/assets/images/week4/basic_class_attr_method_type.png" alt="drawing" style="background-color:white" width="400"/>
+<img src="/2022/assets/images/week4/basic_class_attr_method_type.png" alt="drawing" style="background-color:white" width="400"/>
 
 UML diagram also allows us to specify the relationship between different classes. For example, `RobotTurtle` and `Coordinate` relationship can be drawn as shown below.
 
-<img src="/assets/images/week4/UML_class_relationship.png" alt="drawing" style="background-color:white" width="600"/>
+<img src="/2022/assets/images/week4/UML_class_relationship.png" alt="drawing" style="background-color:white" width="600"/>
 
 In this diagram, we see that one `RobotTurtle` can have one `Coordinate`. This is a specific kind of _association_ relationship called **composition**. This means that `RobotTurtle` is composed of a `Coordinate`. When the object `RobotTurtle` is destroyed, the `Coordinate` object associated with it is also destroyed. There are other kinds of relationship which we will introduce along the way.

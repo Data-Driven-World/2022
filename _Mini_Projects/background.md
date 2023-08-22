@@ -34,7 +34,7 @@ A desktop environment typically consists of icons, windows, toolbars, folders, w
 
 Long before Desktop GUI is made, people interact with their computers via the the **Command Line Interface** (CLI, also known as the termina). They enter **commands** via text to use the computer entirely. For example, suppose we want to rename the folder `Data-Driven-World.github.io` to `Data-Driven-World-website.github.io`. You might think that **renaming** a file can only be done by right clicking on the file and then ---> `rename`.
 
-<img src="/assets/images/background/1.png"  class="center_fifty"/>
+<img src="/2022/assets/images/background/1.png"  class="center_fifty"/>
 
 However, one can enter the following **command** to the terminal and achieve the same result:
 
@@ -61,7 +61,7 @@ Each operating system has its own command line:
 
 Open a terminal window. Regardless of whichever OS you use, you are likely to be faced with a **prompt** (the thing with the cursor, waiting for your `command`).
 
-<img src="/assets/images/background/2.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/2.png"  class="center_seventy"/>
 
 You can type `commands` into the prompt, and then press `enter` to **execute** that command. For example, the first two commands you have to enter to **download** the `mp_sort` (mini project 1) repository is:
 
@@ -72,18 +72,18 @@ git clone https://github.com/Data-Driven-World/d2w_mini_projects
 
 Each of the line above is **one** command. The first command is **cd** (stands for change directory). It changes your **current working directory**, just like how you click open folders after folders in your Finder or File Explorer to navigate through your **file system** and find the right location and create new things in this location you want:
 
-<img src="/assets/images/background/3.gif"  class="center_fifty"/>
+<img src="/2022/assets/images/background/3.gif"  class="center_fifty"/>
 
 The same thing can be done via the command line:
-<img src="/assets/images/background/4.gif"  class="center_seventy"/>
+<img src="/2022/assets/images/background/4.gif"  class="center_seventy"/>
 
 So `cd Downloads` is none other than **navigating** to `~/Downloads` folder.
 
 The next thing to do is to **download** the starter code for your mini projects. The second command `git clone [project_url]` does that. We ask the program **git** to `clone` (**download**) the repository situated in the url into your `~/Downloads` folder. . This is essentially the same as actually opening the url on the browser, and clicking **Download ZIP**, landing the project in your `~/Downloads` folder.:
-<img src="/assets/images/background/5.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/5.png"  class="center_seventy"/>
 
 Notice how the new folder `d2w_mini_projects` are created after you `clone`:
-<img src="/assets/images/background/6.gif"  class="center_seventy"/>
+<img src="/2022/assets/images/background/6.gif"  class="center_seventy"/>
 
 ### How CLI Works (Baby Edition)
 
@@ -101,7 +101,7 @@ We can find git by typing `whereis git` command (for macOS and Linux only), or `
 - This is because simply **double clicking** git does not gives it adequate **input** (like `clone`)
 - This is equivalent to just typing the command `git` and pressing enter in the terminal as shown
 
-<img src="/assets/images/background/7.gif"  class="center_seventy"/>
+<img src="/2022/assets/images/background/7.gif"  class="center_seventy"/>
 
 As you can see, `git` is just like any other programs you have downloaded and installed in your computer (MS Word, Steam, Telegram, Whatsapp), just that these programs have a **graphical user interface** while `git` does not.
 
@@ -109,7 +109,7 @@ As you can see, `git` is just like any other programs you have downloaded and in
 
 `python` works the same way. You can find where `python` is installed in your computer and try to **double click** it. In the demo below, python in installed in `/Users/natalie_agus/.pipenv/shims/python`. Finding it via the file finder and double-clicking it opens a terminal window where you can use python interactively in the terminal.
 
-<img src="/assets/images/background/8.gif"  class="center_seventy"/>
+<img src="/2022/assets/images/background/8.gif"  class="center_seventy"/>
 
 When you want to run a Python script, you can use the command `python file.py`, which means to give `file.py` as an **input** to the `python` **program** and **run** it.
 
@@ -136,11 +136,11 @@ Folders also have a **path**. The path of the `Downloads` folder is then `C:\Use
 
 For example, if we execute the command `python application.py`, we need to **ensure** that the current working directory of the CLI is at `/Users/natalie_agus/Downloads/d2w_mini_projects/mp_sort`. The example below shows a scenario where you are at the **wrong** directory, and the file `application.py` is **not found** (error message printed _by_ the terminal).
 
-<img src="/assets/images/background/9.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/9.png"  class="center_seventy"/>
 
 We need to "open" the `mp_sort` folder first before we can successfully launch `application.py`:
 
-<img src="/assets/images/background/10.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/10.png"  class="center_seventy"/>
 
 Notice the error message is no longer `[Errno 2] No such file or directory`, but `ModuleNotFoundError: No module named 'flask'`. We know two things from this message:
 
@@ -153,7 +153,7 @@ You can use `cd [path]` to navigate ("open") the folder that you want in the ter
 
 For instance, `cd /Users/natalie_agus/Downloads/d2w_mini_projects/mp_sort` opens the `mp_sort` folder right away (that is if you can **remember** its path). Usually, people can't remember the path of their files, and instead perform `cd` in **stages**, combined with `ls` or `dir` to **view** the list of files in the current opened folder:
 
-<img src="/assets/images/background/11.gif"  class="center_seventy"/>
+<img src="/2022/assets/images/background/11.gif"  class="center_seventy"/>
 
 Tips: press `tab` to **autocomplete** certain commands. The example you saw above utilises many terminal **extensions** to make your terminal **pretty**. macOS or Linux users, do yourself a favor and read [this article](https://medium.com/@shivam1/make-your-terminal-beautiful-and-fast-with-zsh-shell-and-powerlevel10k-6484461c6efb).
 {:.info}
@@ -169,7 +169,7 @@ You can check this list by typing `echo $PATH` in your macOS/Linux terminal, or 
 
 - You will have an output looking as such
 - Each "value" is separated by the **colon** (`:`)
-  <img src="/assets/images/background/12.png"  class="center_seventy"/>
+  <img src="/2022/assets/images/background/12.png"  class="center_seventy"/>
 
 For example, if you enter `python` into the terminal, the terminal does the following:
 
@@ -263,7 +263,7 @@ When you navigate to wherever `mp_sort` is, e.g: `cd /Users/natalie_agus/Downloa
 
 The program `pipenv` helps you install and **manage python modules** per project (libraries, which is just scripts that can be used by you as tools to do things). One popular module is `numpy`, which contains many matrix-related functions (dot product, cross product, etc). For this mini project, we will be using a bunch of python modules that we need to install. It is listed inside `requirements.txt` inside `mp_sort`:
 
-<img src="/assets/images/background/14.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/14.png"  class="center_seventy"/>
 
 ### pipenv
 
@@ -276,7 +276,7 @@ pip install --user pipenv
 > `pip` is a program that is _installed_ (placed in the `PATH`) when you installed Python to your computer. It helps you install another program called `pipenv`.
 
 If you're met with such **WARNING**, add the path to your `PATH` variable:
-<img src="/assets/images/background/13.png"  class="center_seventy"/>
+<img src="/2022/assets/images/background/13.png"  class="center_seventy"/>
 
 For instance, we add the path `/Users/natalie_agus/.local/bin` to our `.zshrc`:
 
@@ -302,7 +302,7 @@ It will return a path **specific to this project**, for example:
 
 If you open that path in your GUI File Finder, you will find all the **modules** (both scripts and executable): transcrypt, flask, wheel, etc in that location. Watch the gif below to understand more:
 
-<img src="/assets/images/background/15.gif"  class="center_full"/>
+<img src="/2022/assets/images/background/15.gif"  class="center_full"/>
 
 ### pipenv shell
 

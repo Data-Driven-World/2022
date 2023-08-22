@@ -1,6 +1,6 @@
 ---
-title: Linear Regression
-permalink: /notes/linear_regression
+title: Multiple Linear Regression
+permalink: /notes/multiple_linear_regression
 key: notes-linear-regression
 layout: article
 nav_key: Notes
@@ -14,9 +14,11 @@ show_date: false
 ---
 
 By the end of this lesson, you should be able to:
+
 - Transform data for **higher** order features
 
 Important words:
+
 - hypothesis
 - polynomial
 - update function
@@ -42,20 +44,24 @@ In the above hypothesis, we have $n$ features. Note also that we can assume to h
 
 We can write this in terms of a row vector, where the features are written as
 
-$$\mathbf{X} = \begin{bmatrix}
+$$
+\mathbf{X} = \begin{bmatrix}
 x_0 & x_1 & \ldots & x_n
-\end{bmatrix} \in {\rm I\!R}^{n+1}$$
+\end{bmatrix} \in {\rm I\!R}^{n+1}
+$$
 
-Note that the dimension of the feature is $n+1$ because we have $x_0 = 1$ which is a constant of 1. 
+Note that the dimension of the feature is $n+1$ because we have $x_0 = 1$ which is a constant of 1.
 
 The parameters can be written as follows.
 
-$$\mathbf{\hat{b}} = \begin{bmatrix}
+$$
+\mathbf{\hat{b}} = \begin{bmatrix}
 \hat{\beta}_0 \\
 \hat{\beta}_1 \\
 \ldots \\
 \hat{\beta}_n
-\end{bmatrix} \in {\rm I\!R}^{n+1}$$
+\end{bmatrix} \in {\rm I\!R}^{n+1}
+$$
 
 Our system equations for all the data points can now be written as follows.
 
@@ -68,12 +74,14 @@ In the above equations, the superscript indicate the index for the data points f
 
 To write the hypothesis as a matrix equation we first need to write the features as a matrix for all the data points.
 
-$$\mathbf{X} = \begin{bmatrix}
+$$
+\mathbf{X} = \begin{bmatrix}
 1 & x_1^1 & \ldots & x_n^1 \\
 1 & x_1^2 & \ldots & x_n^2 \\
 \ldots & \ldots & \ldots & \ldots \\
 1 & x_1^m & \ldots & x_n^m
-\end{bmatrix} \in {\rm I\!R}^{m \times (n+1)}$$
+\end{bmatrix} \in {\rm I\!R}^{m \times (n+1)}
+$$
 
 with this, we can now write the hypothesis as a matrix multiplication.
 
@@ -95,7 +103,7 @@ Writing it as matrix multiplication gives us the following.
 
 $$J(\hat{\beta}_0, \hat{\beta}_1) = \frac{1}{2m}(\mathbf{\hat{y}}-\mathbf{y})^T\times (\mathbf{\hat{y}}-\mathbf{y})$$
 
-This equation is exactly the same as the simple linear regression. 
+This equation is exactly the same as the simple linear regression.
 
 ## Gradient Descent
 
@@ -127,13 +135,13 @@ Substituting the equation for $\mathbf{\hat{y}}$ gives us the following.
 
 $$\mathbf{\hat{b}} = \mathbf{\hat{b}} - \alpha\frac{1}{m} \mathbf{X}^T \times (\mathbf{X}\times \mathbf{\hat{b}} - \mathbf{y})$$
 
-Again, this is exactly the same as the simple linear regression. 
+Again, this is exactly the same as the simple linear regression.
 
-This means that all our equations have not changed and what we need to do is create the right parameter vector $\mathbf{\hat{b}}$ and the matrix $\mathbf{X}$. Once we constructed these vector and matrix, all the other equations remain the same. 
+This means that all our equations have not changed and what we need to do is create the right parameter vector $\mathbf{\hat{b}}$ and the matrix $\mathbf{X}$. Once we constructed these vector and matrix, all the other equations remain the same.
 
 ## Polynomial Model
 
-There are time that even when there is only one feature we may want to have a hypothesis that is not a straight line. An example of would be if our model is a quadratic equation. We can use multiple linear regression to create hypothesis beyond a straight line. 
+There are time that even when there is only one feature we may want to have a hypothesis that is not a straight line. An example of would be if our model is a quadratic equation. We can use multiple linear regression to create hypothesis beyond a straight line.
 
 Recall that in multiple linear regression, the hypothesis is writen as follows.
 
@@ -150,13 +158,14 @@ $$\hat{y}(x) = \hat{\beta}_0 + \hat{\beta}_1 x + \hat{\beta}_2 x^2 $$
 
 In this case, the matrix for the features becomes as follows.
 
-
-$$\mathbf{X} = \begin{bmatrix}
+$$
+\mathbf{X} = \begin{bmatrix}
 1 & x^{(1)} & (x^2)^{(1)} \\
 1 & x^{(2)} & (x^2)^{(2)} \\
 \ldots & \ldots  \\
 1 & x^{(m)} & (x^2)^{(m)}
-\end{bmatrix} \in {\rm I\!R}^{m \times 3}$$
+\end{bmatrix} \in {\rm I\!R}^{m \times 3}
+$$
 
 In the notation above, we have put the index for the data point inside a bracket to avoid confusion with the power.
 

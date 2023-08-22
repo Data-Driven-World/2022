@@ -12,12 +12,15 @@ aside:
 show_edit_on_github: false
 show_date: false
 ---
+
 By the end of this lesson, you should be able to:
+
 - Define **Big-O** notation and other asymptotic notations
 - Derive **complexity** of a code using its computation model
 - **Measure** computation time for bubble sort, insertion sort, built-in sort, and heapsort
 
 Important words:
+
 - complexity
 - time complexity
 - asymptotic notation
@@ -33,10 +36,9 @@ A performance of a computer program can be measured using its computation time a
 
 Asymptotic notation is a shorthand used to give a quick measure of the behaviour of a function $f(n)$ as $n$ grows large. Here, we will introduce several notations that is common in analysing computer programs.
 
-
 ### Little Oh
 
-This notation is to indicate that $f$ is *asymptotically smaller* than $g$, or in symbols,
+This notation is to indicate that $f$ is _asymptotically smaller_ than $g$, or in symbols,
 
 $$f(x) = o(g(x))$$
 
@@ -54,7 +56,7 @@ $$\lim_{x\to\infty} \frac{1000x^{1.9}}{x^2} = \lim_{x\to\infty} \frac{1000}{x^{0
 
 ### Big Oh
 
-Big Oh is the most frequently used notation in computing as it is used to give an upper bound on the growth of a function. 
+Big Oh is the most frequently used notation in computing as it is used to give an upper bound on the growth of a function.
 
 $$f = O(g)$$
 
@@ -62,7 +64,7 @@ if and only if,
 
 $$\lim_{x\to \infty}\text{sup} \frac{f(x)}{g(x)} < \infty$$
 
-Note the word "sup" means superior or above as it indicates the upper bound. 
+Note the word "sup" means superior or above as it indicates the upper bound.
 
 For example,
 
@@ -74,7 +76,7 @@ $$\lim_{x\to\infty} \text{sup} \frac{x^2+100x+10}{x^2} = 1 < \infty$$
 
 ### Big Omega
 
-The previous notation "Big Oh" is used to indicate an upper bound. The notation to indicate the lower bound is Big Omega, or simply Omega. 
+The previous notation "Big Oh" is used to indicate an upper bound. The notation to indicate the lower bound is Big Omega, or simply Omega.
 
 $$f = \Omega(g)$$
 
@@ -82,7 +84,7 @@ if and only if there exist a constant $c$ and an $x_0$ such that for all $x\ge x
 
 $$f(x) \ge c |g(x)|$$
 
-In other words, this simply means that $f(x)$ is greater than or equal to $g(x)$. As you can guess, this sounds like Big-Oh in reverse. 
+In other words, this simply means that $f(x)$ is greater than or equal to $g(x)$. As you can guess, this sounds like Big-Oh in reverse.
 
 $$f(x) = O(g(x)) \text{ if and only if } g(x) = \Omega(f(x))$$
 
@@ -98,7 +100,7 @@ This is true because
 
 $$\lim_{x\to\infty}\frac{x}{x^2} = \lim_{x\to\infty}\frac{1}{x} < \infty$$
 
-Therefore, 
+Therefore,
 
 $$x^2 = \Omega(x)$$
 
@@ -124,7 +126,6 @@ This is true because
 
 $$\lim_{x\to\infty} \frac{x}{x^{1.5}} = \lim_{x\to\infty} x^{-0.5} = \lim_{x\to\infty} \frac{1}{\sqrt{x}} = 0$$
 
-
 #### Theta
 
 Sometimes, we want to specify both upper bound and lower bound at the same time. We use this notation,
@@ -135,7 +136,7 @@ if and only if,
 
 $$f=O(g)\text{ and } g=O(f)$$
 
-For example, 
+For example,
 
 $$10n^3-20n^2+1 = \Theta(n^3)$$
 
@@ -163,19 +164,19 @@ $$10n^3-20n^2+1 = \Theta(n^3)$$
 
 These asymptotic notations can be understood better in relation to analogies with relational operators of numbers.
 
-| relational operator | asymptotic notation|
-|--------------|------------|
-| $f = g$    |  $f = \Theta(g)$         |
-| $f < g$    |  $f = o(g)$         |
-| $f <= g$   | $ f= O(g)$         |
-| $f > g$    |  $f = \omega(g)$     |
-| $f >= g$   | $f = \Omega(g)$         |
+| relational operator | asymptotic notation |
+| ------------------- | ------------------- |
+| $f = g$             | $f = \Theta(g)$     |
+| $f < g$             | $f = o(g)$          |
+| $f <= g$            | $ f= O(g)$          |
+| $f > g$             | $f = \omega(g)$     |
+| $f >= g$            | $f = \Omega(g)$     |
 
 ## Measuring Computation Time
 
 We are interested in the trend on the computation time as the number of input changes. For example, considering the sorting algorithms that we have considered thus far. How does the computation time increases as we increase the number of the input array? In analysing this, we are interested in the upper bound, and so we normally use the Big-Oh notation to indicate the upper bound of a computation time of a program.
 
-We can investigate this empirically by creating a list of different sizes, i.e. 10 elements, 100 elements, etc. We can then ask our sorting algorithm to sort these numbers. We can also compare the performance of the sorting algorithm when the input list is already sorted or when it is randomly shuffled. 
+We can investigate this empirically by creating a list of different sizes, i.e. 10 elements, 100 elements, etc. We can then ask our sorting algorithm to sort these numbers. We can also compare the performance of the sorting algorithm when the input list is already sorted or when it is randomly shuffled.
 
 ### Setup
 
@@ -186,8 +187,8 @@ We generate the input array of integers with different number of elements from 1
 If we run version 1 of Bubble Sort algorithm on the randomly shuffled array. The output time in seconds are shown here.
 
 ```python
-bubbletime = [5.7220458984375e-06, 2.2649765014648438e-05, 
-              0.0014679431915283203, 0.2126140594482422, 
+bubbletime = [5.7220458984375e-06, 2.2649765014648438e-05,
+              0.0014679431915283203, 0.2126140594482422,
               25.051520347595215]
 ```
 
@@ -198,8 +199,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 nelements = [10, 100, 1000, 10000, 100000]
-bubbletime = [5.7220458984375e-06, 2.2649765014648438e-05, 
-              0.0014679431915283203, 0.2126140594482422, 
+bubbletime = [5.7220458984375e-06, 2.2649765014648438e-05,
+              0.0014679431915283203, 0.2126140594482422,
               25.051520347595215]
 
 plt.title("Bubble Sort on Randomly Shuffled Array")
@@ -207,7 +208,8 @@ plt.xlabel("log(number of input)")
 plt.ylabel("log(computation time (s))")
 plt.plot(np.log(nelements), np.log(bubbletime),'o-')
 ```
-![](/assets/images/week2/plot_time_bubblesort.jpeg)
+
+![](/2022/assets/images/week2/plot_time_bubblesort.jpeg)
 
 We can see that the computation time increases as the input increases. Moreover we can see that the relationship is almost a straight line when we plot the logarithmic of the y axis and the logarithmic of the x axis. In fact, the relationship is a quadratic. If we get the slope of this log plot, taking the x-axis between 6 to 10, we get:
 
@@ -220,8 +222,7 @@ Taking the log of both sides gives us
 
 $$\log(y) = 2 \log(x)$$
 
-
-In this equation the slope is 2 as shown on the plot. We can also check if it is quadratic by calculating the square of our input and see if it is a straight line. 
+In this equation the slope is 2 as shown on the plot. We can also check if it is quadratic by calculating the square of our input and see if it is a straight line.
 
 This means that the computation time of Bubble Sort algorithm is quadratic.
 
@@ -230,7 +231,7 @@ $$T(n) = O(n^2)$$
 On the other hand, this is the computation time when the input is already sorted.
 
 ```python
-bubbletimeSorted = [6.4373016357421875e-06, 1.9073486328125e-06, 
+bubbletimeSorted = [6.4373016357421875e-06, 1.9073486328125e-06,
                     4.291534423828125e-06, 3.147125244140625e-05, 0.00030159950256347656]
 ```
 
@@ -238,7 +239,7 @@ We can plot this again on the same input.
 
 ```python
 nelements = [10, 100, 1000, 10000, 100000]
-bubbletimeSorted = [6.4373016357421875e-06, 1.9073486328125e-06, 
+bubbletimeSorted = [6.4373016357421875e-06, 1.9073486328125e-06,
                     4.291534423828125e-06, 3.147125244140625e-05, 0.00030159950256347656]
 
 plt.title("Bubble Sort on an Already Sorted Array")
@@ -247,7 +248,7 @@ plt.ylabel("log(computation time (s))")
 plt.plot(np.log(nelements), np.log(bubbletimeSorted),'o-')
 ```
 
-![](/assets/images/week2/plot_time_bubblesort_sorted.jpeg)
+![](/2022/assets/images/week2/plot_time_bubblesort_sorted.jpeg)
 
 Taking the slope between 8 to 11, we have approximately the following slope:
 
@@ -264,13 +265,13 @@ $$T(n) = O(n)$$
 We can do the same with Insertion Sort Algorithm. Below is the output when the input is randomly shuffled.
 
 ```python
-insertiontime = [6.198883056640625e-06, 7.867813110351562e-06, 
+insertiontime = [6.198883056640625e-06, 7.867813110351562e-06,
                  0.0006382465362548828, 0.06774091720581055, 6.839613199234009]
 ```
 
 We can plot this with the same input.
 
-![](/assets/images/week2/plot_time_insertionsort_random.jpeg)
+![](/2022/assets/images/week2/plot_time_insertionsort_random.jpeg)
 
 We can again notice that the computation time increases in this logarithmic scales with a slope of about 2. This means that the computation time is also quadratic.
 
@@ -281,7 +282,7 @@ $$T(n) = O(n^2)$$
 On the other hand, this is the output when the input is already sorted.
 
 ```python
-insertiontimeSorted = [5.7220458984375e-06, 1.430511474609375e-06, 
+insertiontimeSorted = [5.7220458984375e-06, 1.430511474609375e-06,
                        4.0531158447265625e-06, 3.123283386230469e-05, 0.0003333091735839844]
 ```
 
@@ -289,7 +290,7 @@ And if we plot, we will see the following.
 
 ```python
 nelements = [10, 100, 1000, 10000, 100000]
-insertiontimeSorted = [5.7220458984375e-06, 1.430511474609375e-06, 
+insertiontimeSorted = [5.7220458984375e-06, 1.430511474609375e-06,
                        4.0531158447265625e-06, 3.123283386230469e-05, 0.0003333091735839844]
 
 plt.title("Insertion Sort on an Already Sorted Array")
@@ -298,7 +299,7 @@ plt.ylabel("log(computation time (s))")
 plt.plot(np.log(nelements), np.log(insertiontimeSorted),'o-')
 ```
 
-![](/assets/images/week2/plot_time_insertionsort_sorted.jpeg)
+![](/2022/assets/images/week2/plot_time_insertionsort_sorted.jpeg)
 
 Similarly, in this plot, looking at the x axis between 7 to 11, the slope is about 1 indicating that the computation time is linear. So the computation time when the input is already sorted is linearly increasing with the input numbers, similar to Bubble Sort. This means that in the best case scenario, the computation time for Insertion Sort is linear.
 
@@ -309,8 +310,8 @@ $$T(n) = O(n)$$
 We can now check the computation time for heapsort algorithm. The computation time for randomly shuffled array is as shown below.
 
 ```python
-heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06, 
-                9.512901306152344e-05, 0.0012400150299072266, 
+heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06,
+                9.512901306152344e-05, 0.0012400150299072266,
                 0.015644311904907227, 0.21677017211914062]
 ```
 
@@ -318,8 +319,8 @@ A quick look actually shows that heapsort is much faster the other two. Let's pl
 
 ```python
 nelements = [10, 100, 1000, 10000, 100000, 1000000]
-heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06, 
-                9.512901306152344e-05, 0.0012400150299072266, 
+heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06,
+                9.512901306152344e-05, 0.0012400150299072266,
                 0.015644311904907227, 0.21677017211914062]
 
 plt.title("Heapsort on Randomly Shuffled Array")
@@ -328,7 +329,7 @@ plt.ylabel("log(computation time (s))")
 plt.plot(np.log(nelements), np.log(heapsorttime),'o-')
 ```
 
-![](/assets/images/week2/plot_time_heapsort_random.jpeg)
+![](/2022/assets/images/week2/plot_time_heapsort_random.jpeg)
 
 We can see that the logarithmic plot has the slope of about:
 
@@ -341,8 +342,8 @@ It turns out that the computation time for Heapsort is logarithmic. We can see a
 ```python
 nelements = np.array([10, 100, 1000, 10000, 100000, 1000000])
 nlog = nelements * np.log(nelements)
-heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06, 
-                9.512901306152344e-05, 0.0012400150299072266, 
+heapsorttime = [5.0067901611328125e-06, 7.867813110351562e-06,
+                9.512901306152344e-05, 0.0012400150299072266,
                 0.015644311904907227, 0.21677017211914062]
 
 plt.title("Heapsort on Randomly Shuffled Array")
@@ -351,7 +352,7 @@ plt.ylabel("computation time (s)")
 plt.plot(nlog, heapsorttime,'o-')
 ```
 
-![](/assets/images/week2/plot_time_heapsort_random_xaxis.jpeg)
+![](/2022/assets/images/week2/plot_time_heapsort_random_xaxis.jpeg)
 
 Notice that now the points fall almost in a straight line. This means that the computation time for heapsort is:
 
@@ -360,8 +361,8 @@ $$T(n) = O(n\log(n))$$
 Now, what happens when we run the algorithm on an already sorted list? It turns out, that the computation time for different number of input elements are as follows.
 
 ```python
-heapsorttimeSorted = [1.2874603271484375e-05, 7.3909759521484375e-06, 
-                      7.82012939453125e-05, 0.0008978843688964844, 
+heapsorttimeSorted = [1.2874603271484375e-05, 7.3909759521484375e-06,
+                      7.82012939453125e-05, 0.0008978843688964844,
                       0.009733200073242188, 0.11059808731079102]
 ```
 
@@ -374,8 +375,8 @@ We can plot this after modifying the x-axis accordingly.
 ```python
 nelements = np.array([10, 100, 1000, 10000, 100000, 1000000])
 nlog = nelements * np.log(nelements)
-heapsorttimeSorted = [1.2874603271484375e-05, 7.3909759521484375e-06, 
-                      7.82012939453125e-05, 0.0008978843688964844, 
+heapsorttimeSorted = [1.2874603271484375e-05, 7.3909759521484375e-06,
+                      7.82012939453125e-05, 0.0008978843688964844,
                       0.009733200073242188, 0.11059808731079102]
 
 plt.title("Heapsort on an already Sorted Shuffled Array")
@@ -384,19 +385,19 @@ plt.ylabel("computation time (s)")
 plt.plot(nlog, heapsorttime,'o-')
 ```
 
-![](/assets/images/week2/plot_time_heapsort_sorted.jpeg)
+![](/2022/assets/images/week2/plot_time_heapsort_sorted.jpeg)
 
 Let's summarize our findings in a table form.
 
-| Sorting Algorithm | Random List   | Sorted List $T(n)$  |
-|-------------------|---------------|---------------|
-| Bubble Sort       | $O(n^2)$      | $O(n)$ |
-| Insertion Sort    | $O(n^2)$      | $O(n)$ |
-| Heapsort          | $O(n\log(n))$ | $O(n\log(n))$|
+| Sorting Algorithm | Random List   | Sorted List $T(n)$ |
+| ----------------- | ------------- | ------------------ |
+| Bubble Sort       | $O(n^2)$      | $O(n)$             |
+| Insertion Sort    | $O(n^2)$      | $O(n)$             |
+| Heapsort          | $O(n\log(n))$ | $O(n\log(n))$      |
 
 ## Analysing Computation Time Using Model
 
-Given a computer program, can we analyse what is the computation time without resolving to the experimentation as we did in the previous section? In this section, we will introduce how we can analyse computer program by looking into the code and applying some computational time model. 
+Given a computer program, can we analyse what is the computation time without resolving to the experimentation as we did in the previous section? In this section, we will introduce how we can analyse computer program by looking into the code and applying some computational time model.
 
 To do so, we are going to indicate using asymptotic notation. In particular we will use the big Oh notation for this purpose.
 
@@ -405,7 +406,7 @@ To do so, we are going to indicate using asymptotic notation. In particular we w
 Let's take a look at the pseudocode version 1 for Bubble Sort.
 
 ```
-Bubble Sort 
+Bubble Sort
 Version: 1
 Input: array
 Output: None, sort in place
@@ -421,11 +422,11 @@ Steps:
 
 Computation time:
 
-* step 1: constant time, $O(1)$.
-* steps 2: n-1 times, so $O(n-1) = O(n)$
-    * step 2.1: n-1 times, so $O(n)$
-        * step 2.1.1 to 2.1.3, are all constant time, so it's $3 \times O(1) = O(1)$
-        
+- step 1: constant time, $O(1)$.
+- steps 2: n-1 times, so $O(n-1) = O(n)$
+  - step 2.1: n-1 times, so $O(n)$
+    - step 2.1.1 to 2.1.3, are all constant time, so it's $3 \times O(1) = O(1)$
+
 So we can compute the computation time for Bubble Sort as follows.
 
 $T(n) = O(1) + O(n) \times (O(n) \times( O(1)))$
@@ -438,7 +439,7 @@ $T(n) = O(1) + O(n^2)$
 
 $T(n) = O(n^2)$
 
-This agrees with the previous section when we state that computational time for Bubble Sort is quadratic. We can also say that the computation is polynomial time. 
+This agrees with the previous section when we state that computational time for Bubble Sort is quadratic. We can also say that the computation is polynomial time.
 
 Let's take a look at version 4 of Bubble Sort.
 
@@ -465,15 +466,14 @@ Steps:
 
 Computation time:
 
-* steps 1 and 2 are constant time, it's $2 \times O(1)$ or simply $O(1)$. 
-* step 3 is executed as long as there is a swap. In this case, we can consider the worst case scenario. In the worst case, the number of swap will be the same as $n-1$. In this case the computation time is $O(n)$. In the best case scenario, there is no swap because it is already sorted, and the computation time is $O(1)$. So on average, the computation time is $O(n/2)$, which is the same as $O(n)$. 
-    * steps 3.1 and 3.2 are constant time, it's $O(1)$. 
-    * step 3.3 is $n-1$ times, so the computation time is $O(n)$. 
-        * steps 3.3.1 to 3.3.3 are all constant time, it's $O(1)$. 
-    * step 3.4 is also constant time, $O(1)$.
-    
-    
-We can calculate the computation time on *average* as:
+- steps 1 and 2 are constant time, it's $2 \times O(1)$ or simply $O(1)$.
+- step 3 is executed as long as there is a swap. In this case, we can consider the worst case scenario. In the worst case, the number of swap will be the same as $n-1$. In this case the computation time is $O(n)$. In the best case scenario, there is no swap because it is already sorted, and the computation time is $O(1)$. So on average, the computation time is $O(n/2)$, which is the same as $O(n)$.
+  - steps 3.1 and 3.2 are constant time, it's $O(1)$.
+  - step 3.3 is $n-1$ times, so the computation time is $O(n)$.
+    - steps 3.3.1 to 3.3.3 are all constant time, it's $O(1)$.
+  - step 3.4 is also constant time, $O(1)$.
+
+We can calculate the computation time on _average_ as:
 
 $T(n) = 2 \times O(1) + O(n) \times (2\times O(1) + O(n) \times (3\times O(1)) + O(1))$
 
@@ -489,14 +489,12 @@ $T(n) = O(n^2)$
 
 So the optimised Bubble Sort in version 4 is still polynomial time, which is quadratic.
 
-
-
 ## Insertion Sort Computation Time
 
 Now, let's consider Insertion Sort computation time. We will use version 2 of Insertion Sort pseudocode.
 
 ```
-Insertion Sort 
+Insertion Sort
 Version: 2
 Input: array
 Output: None, sort in place
@@ -513,20 +511,20 @@ Steps:
 
 Computation time:
 
-* step 1 is $O(1)$
-* step 2 is executed $n-1$, so the time is $O(n)$.
-    * steps 2.1 and 2.2 are all constant time, so it is $O(1)$.
-    * step 2.3 is executed depending on the actual values in the array. In the worst case it is $n-1$ times, and in the best case it's already ordered and executed as constant time. In average, then the computation time is $O(n/2)$ or simply $O(n)$. 
-        * steps 2.3.1 and 2.3.2 are constant time, i.e. $O(1)$.
-    * step 2.4 is also constant time, i.e. $O(1)$.
-    
+- step 1 is $O(1)$
+- step 2 is executed $n-1$, so the time is $O(n)$.
+  - steps 2.1 and 2.2 are all constant time, so it is $O(1)$.
+  - step 2.3 is executed depending on the actual values in the array. In the worst case it is $n-1$ times, and in the best case it's already ordered and executed as constant time. In average, then the computation time is $O(n/2)$ or simply $O(n)$.
+    - steps 2.3.1 and 2.3.2 are constant time, i.e. $O(1)$.
+  - step 2.4 is also constant time, i.e. $O(1)$.
+
 We can calculate the computation time as follows.
 
 $T(n) = O(1) + O(n) \times (2 \times O(1) + O(n) \times(O(1)) + O(1) )$
 
 $T(n) = O(1) + O(n) \times ( O(1) + O(n) + O(1) )$
 
-$T(n) = O(1) + O(n) \times  O(n) $
+$T(n) = O(1) + O(n) \times O(n) $
 
 $T(n) = O(1) + O(n^2) $
 
@@ -554,12 +552,12 @@ Steps:
 
 Computation time:
 
-* step 1 depends on computation time for build-max-heap() algorithm. We'll come to this later.
-* step 2 is constant time, i.e. $O(1)$
-* step 3 is done from $n-1$ , which is the last element in the array, down to 1, which is the second element. This means that it is executed $n-1$ times, so the computation time is $O(n)$.
-    * steps 3.1 and 3.2 are constant time, $O(1)$.
-    * step 3.3 depends on computation time for max-heapify().
-    
+- step 1 depends on computation time for build-max-heap() algorithm. We'll come to this later.
+- step 2 is constant time, i.e. $O(1)$
+- step 3 is done from $n-1$ , which is the last element in the array, down to 1, which is the second element. This means that it is executed $n-1$ times, so the computation time is $O(n)$.
+  - steps 3.1 and 3.2 are constant time, $O(1)$.
+  - step 3.3 depends on computation time for max-heapify().
+
 To get the computation time for heapsort, we need to check what is the computation time for `build-max-heap()` and `max-heapify`. Let's start with the first one.
 
 ### Computation Time for Build-Max-Heap
@@ -578,16 +576,16 @@ Steps:
 
 Computation time:
 
-* step 1 and 2 are constant time, $O(1)$.
-* step 3 is fixed and executed for $n/2$ times. We can say that the computation time is $O(n)$.
-* step 3.1 on the other hand depends on the computation time for `max-heapify`.
+- step 1 and 2 are constant time, $O(1)$.
+- step 3 is fixed and executed for $n/2$ times. We can say that the computation time is $O(n)$.
+- step 3.1 on the other hand depends on the computation time for `max-heapify`.
 
 ### Computation Time for Max-Heapify
 
 ```
 def max-heapify(A, i):
 version: 2
-Input: 
+Input:
   - A = array storing the heap
   - i = index of the current node to restore max-heap property
 Output: None, restore the element in place
@@ -604,12 +602,11 @@ Steps:
 ```
 
 Computation time for `max-heapify()`:
-* step 1 and 2 are constant time, $O(1)$.
-* step 3, in average is executed in $O(\log(n))$ time.
-    * steps 3.1 to 3.4 are all constant time, $O(1)$.
-        * steps 3.3.1 and 3.3.2 are also constant time, $O(1)$.
-        
 
+- step 1 and 2 are constant time, $O(1)$.
+- step 3, in average is executed in $O(\log(n))$ time.
+  - steps 3.1 to 3.4 are all constant time, $O(1)$.
+    - steps 3.3.1 and 3.3.2 are also constant time, $O(1)$.
 
 In this case, computation time is:
 
@@ -621,14 +618,14 @@ $T(n) = O(\log(n))$
 
 You can skip this part if you want. But for those curious, let's represent some example of binary tree and calculate the number of levels and its nodes or elements. In the below table, we represent the nodes at different levels with different symbols. For example, when there are 3 levels (level 2 row in the table), the only node in level 0 is represented as `o`, level 1 nodes are represented as `x` (there are two of them), and level 2 nodes are represented as `o` again (there are four of them, two for each `x` node in level 1).
 
-| level | diagram (different level using different symbol)                 | nodes at level i | total number of nodes |
-|-------|---------------------------|--------------------|-------------------------|
-| 0     | o                         | 1                  | 1                       |
-| 1     | o xx                      | 2                  | 3                       |
-| 2     | o x x oo oo               | 4                  | 7                       |
-| 3     | o x x  oo oo xx xx  xx xx | 8                  | 15                      |
+| level | diagram (different level using different symbol) | nodes at level i | total number of nodes |
+| ----- | ------------------------------------------------ | ---------------- | --------------------- |
+| 0     | o                                                | 1                | 1                     |
+| 1     | o xx                                             | 2                | 3                     |
+| 2     | o x x oo oo                                      | 4                | 7                     |
+| 3     | o x x oo oo xx xx xx xx                          | 8                | 15                    |
 
-From the above table we can see that the maximum number of elements at level *i* can be calculated from the level position as
+From the above table we can see that the maximum number of elements at level _i_ can be calculated from the level position as
 
 $$n_{i} = 2^i$$
 
@@ -656,28 +653,28 @@ In computing, we usually understand that the base of the log is 2. Therefore, we
 
 $$level =\lfloor{ \log(n)}\rfloor$$
 
-Let's come back to step 3. This step is executed by moving `current_i` from one node to another node. The movement is always from the parent to the child node. This means that it moves in the vertical direction in the binary tree across the levels. Since there are $\log(n)$ levels, the maximum number of moves will be $\log(n)-1$. That's why we say that the computation time is $O(\log(n))$. 
+Let's come back to step 3. This step is executed by moving `current_i` from one node to another node. The movement is always from the parent to the child node. This means that it moves in the vertical direction in the binary tree across the levels. Since there are $\log(n)$ levels, the maximum number of moves will be $\log(n)-1$. That's why we say that the computation time is $O(\log(n))$.
 
 ### Total Computation Time for Heapsort
 
 Let's recall and summarize the computation time of the different procedures.
 
-* Heapsort
+- Heapsort
 
-    $T(n) = T_{build-max-heap}(n) + O(1) + O(n) \times(O(1)+ T_{max-heapify}(n))$
-    
-    $T(n) = T_{build-max-heap}(n) + O(n) \times T_{max-heapify}(n)$
-    
-* Build-Max-Heap
+  $T(n) = T_{build-max-heap}(n) + O(1) + O(n) \times(O(1)+ T_{max-heapify}(n))$
 
-    $T_{build-max-heap}(n) = O(1) + O(n) \times T_{max-heapify}$
-    
-    $T_{build-max-heap}(n) = O(n) \times T_{max-heapify}$
-    
-* Max-Heapify
+  $T(n) = T_{build-max-heap}(n) + O(n) \times T_{max-heapify}(n)$
 
-    $T_{max-heapify}(n) = O(\log(n))$
-    
+- Build-Max-Heap
+
+  $T_{build-max-heap}(n) = O(1) + O(n) \times T_{max-heapify}$
+
+  $T_{build-max-heap}(n) = O(n) \times T_{max-heapify}$
+
+- Max-Heapify
+
+  $T_{max-heapify}(n) = O(\log(n))$
+
 From this we can calculate that the computation time for `build-max-heapify()` is
 
 $T_{build-max-heap}(n) = O(n) \times O(\log(n))$
@@ -698,4 +695,4 @@ In summary, different algorithm may have different performance in terms of compu
 
 <img src="https://interactivepython.org/runestone/books/published/pythonds/_images/newplot.png" alt="Trulli" width="700" height="500" style="background-color:white">
 
-In our examples above, both Bubble Sort and Insertion sort is quadratic while Heapsort is log linear. We can see that Heapsort is much faster as the number of elements grows big. 
+In our examples above, both Bubble Sort and Insertion sort is quadratic while Heapsort is log linear. We can see that Heapsort is much faster as the number of elements grows big.

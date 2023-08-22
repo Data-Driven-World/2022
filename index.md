@@ -11,11 +11,11 @@ aside:
 
 This course provides fundamentals for students with the necessary skills in a data driven world. The first half of the course focuses on providing students with algorithmic thinking and different paradigms of computation such as procedural, object-oriented design and state machine. The second half of the course focuses on a basic introduction to machine learning for categorical and continuous data. Students will be able to apply both algorithms and basic machine learning techniques to solve real-world problems driven by data and computation.
 
-![](/assets/images/home/course_overview.png)
+![](/2022/assets/images/home/course_overview.png)
 
 <br>
 
-![](/assets/images/home/DDW Concept Map-Big Topics and Period.drawio.png)
+![](/2022/assets/images/home/DDW Concept Map-Big Topics and Period.drawio.png)
 
 ## Prerequisite
 
@@ -73,4 +73,4 @@ Students are expected to do their pre-reading and homework on their own while di
 
 ## Lesson Format
 
-![](/assets/images/home/lesson_format.png)
+![](/2022/assets/images/home/lesson_format.png)
